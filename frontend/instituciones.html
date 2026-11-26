@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instituciones · Educación y Cultura</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/datos.js"></script>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+  <script>EducacionCultura.auth.proteger();</script>
+  <header class="nav">
+    <div class="nav__interior">
+      <a class="nav__marca" href="index.html"><span class="nav__logo" aria-hidden="true">✦</span><span>Educación y Cultura</span></a>
+      <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <nav class="nav__menu" id="navMenu" aria-label="Navegación principal"><a class="nav__link" href="index.html">Resumen</a><a class="nav__link" href="instituciones.html">Instituciones</a></nav>
+      <div class="nav__usuario"><span class="nav__nombre" id="navUsuario">—</span><button class="btn btn--secundario btn--sm" id="btnSalir" type="button">Salir</button></div>
+    </div>
+  </header>
+  <main class="contenedor">
+    <div class="cabecera-pagina">
+      <div><p class="sobrelinea">Directorio</p><h1>Instituciones</h1><p>Explora y administra organizaciones de educación y cultura.</p></div>
+      <button class="btn btn--primario" type="button" id="btnNuevo">＋ Añadir institución</button>
+    </div>
+    <section class="panel" aria-labelledby="tituloDirectorio">
+      <h2 id="tituloDirectorio" class="oculto">Directorio de instituciones</h2>
+      <div class="barra">
+        <div class="barra__crecer"><label for="buscar" class="oculto">Buscar instituciones</label><input class="campo__control" type="search" id="buscar" placeholder="Buscar por nombre, ciudad o correo…" autocomplete="off"></div>
+        <div><label for="filtroTipo" class="oculto">Filtrar por área</label><select class="campo__control" id="filtroTipo"><option value="">Todas las áreas</option></select></div>
+        <button class="btn btn--secundario btn--sm" type="button" id="btnRestaurar">Restaurar demo</button>
+      </div>
+      <div class="tabla-scroll">
+        <table class="tabla">
+          <thead><tr><th scope="col" class="col-id">ID</th><th scope="col">Institución</th><th scope="col">Área</th><th scope="col">Ciudad</th><th scope="col">Modalidad</th><th scope="col">Estado</th><th scope="col" class="col-acciones">Acciones</th></tr></thead>
+          <tbody id="tablaInstituciones"></tbody>
+        </table>
+      </div>
+      <p class="contador" id="contadorInstituciones" aria-live="polite"></p>
+    </section>
+  </main>
+  <dialog class="modal" id="modalInstitucion" aria-labelledby="modalTitulo">
+    <form id="formInstitucion" novalidate>
+      <div class="modal__cabecera"><div><p class="sobrelinea">Directorio educativo y cultural</p><h2 id="modalTitulo">Nueva institución</h2></div><button class="btn-icono" type="button" data-cerrar aria-label="Cerrar">✕</button></div>
+      <div class="modal__cuerpo">
+        <div class="campo"><label for="nombre">Nombre de la institución *</label><input class="campo__control" type="text" id="nombre" name="nombre" maxlength="120" aria-describedby="errorNombre" required><p class="campo__error" id="errorNombre"></p></div>
+        <div class="fila">
+          <div class="campo"><label for="tipo">Área *</label><select class="campo__control" id="tipo" name="tipo" aria-describedby="errorTipo" required><option value="">Selecciona un área</option></select><p class="campo__error" id="errorTipo"></p></div>
+          <div class="campo"><label for="ciudad">Ciudad *</label><input class="campo__control" type="text" id="ciudad" name="ciudad" maxlength="80" aria-describedby="errorCiudad" required><p class="campo__error" id="errorCiudad"></p></div>
+        </div>
+        <div class="fila">
+          <div class="campo"><label for="modalidad">Modalidad *</label><select class="campo__control" id="modalidad" name="modalidad" aria-describedby="errorModalidad" required><option value="">Selecciona modalidad</option><option>Presencial</option><option>Virtual</option><option>Híbrida</option></select><p class="campo__error" id="errorModalidad"></p></div>
+          <div class="campo"><label for="contacto">Correo de contacto *</label><input class="campo__control" type="email" id="contacto" name="contacto" maxlength="150" placeholder="contacto@institucion.edu" aria-describedby="errorContacto" required><p class="campo__error" id="errorContacto"></p></div>
+        </div>
+      </div>
+      <div class="modal__pie"><button class="btn btn--secundario" type="button" data-cerrar>Cancelar</button><button class="btn btn--primario" type="submit" id="btnGuardar">Guardar</button></div>
+    </form>
+  </dialog>
+  <div class="alertas" id="alertas" role="status" aria-live="polite"></div>
+  <script src="js/ui.js"></script>
+  <script src="js/instituciones.js"></script>
+</body>
+</html>

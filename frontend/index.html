@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio · Educación y Cultura</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/datos.js"></script>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+  <script>EducacionCultura.auth.proteger();</script>
+  <header class="nav">
+    <div class="nav__interior">
+      <a class="nav__marca" href="index.html"><span class="nav__logo" aria-hidden="true">✦</span><span>Educación y Cultura</span></a>
+      <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <nav class="nav__menu" id="navMenu" aria-label="Navegación principal">
+        <a class="nav__link" href="index.html">Resumen</a>
+        <a class="nav__link" href="instituciones.html">Instituciones</a>
+      </nav>
+      <div class="nav__usuario"><span class="nav__nombre" id="navUsuario">—</span><button class="btn btn--secundario btn--sm" id="btnSalir" type="button">Salir</button></div>
+    </div>
+  </header>
+  <main class="contenedor">
+    <div class="cabecera-pagina">
+      <div><p class="sobrelinea">Directorio educativo y cultural</p><h1>Resumen general</h1><p>Una vista de las instituciones que impulsan el aprendizaje y la cultura.</p></div>
+      <a class="btn btn--primario" href="instituciones.html">Explorar instituciones <span aria-hidden="true">→</span></a>
+    </div>
+    <section class="tarjetas" aria-label="Indicadores del directorio">
+      <article class="tarjeta"><span class="tarjeta__icono" aria-hidden="true">⌂</span><span class="tarjeta__etiqueta">Instituciones</span><span class="tarjeta__valor" id="statInstituciones">—</span><span class="tarjeta__nota">en el directorio</span></article>
+      <article class="tarjeta"><span class="tarjeta__icono" aria-hidden="true">◇</span><span class="tarjeta__etiqueta">Áreas representadas</span><span class="tarjeta__valor" id="statTipos">—</span><span class="tarjeta__nota">educación y cultura</span></article>
+      <article class="tarjeta"><span class="tarjeta__icono" aria-hidden="true">✓</span><span class="tarjeta__etiqueta">Instituciones activas</span><span class="tarjeta__valor" id="statActivas">—</span><span class="tarjeta__nota">disponibles para consulta</span></article>
+      <article class="tarjeta tarjeta--aviso"><span class="tarjeta__icono" aria-hidden="true">◷</span><span class="tarjeta__etiqueta">En revisión</span><span class="tarjeta__valor" id="statRevision">—</span><span class="tarjeta__nota">pendientes de verificar</span></article>
+    </section>
+    <div class="dashboard-grid">
+      <section class="panel" aria-labelledby="tituloTipos">
+        <div class="panel__cabecera"><div><p class="sobrelinea">Panorama</p><h2 id="tituloTipos">Áreas del directorio</h2></div></div>
+        <div class="tabla-scroll"><table class="tabla"><thead><tr><th scope="col">Área</th><th scope="col" class="num">Instituciones</th></tr></thead><tbody id="tablaResumen"></tbody></table></div>
+      </section>
+      <section class="panel" aria-labelledby="tituloRecientes">
+        <div class="panel__cabecera"><div><p class="sobrelinea">Actualizaciones</p><h2 id="tituloRecientes">Instituciones recientes</h2></div><a class="enlace-secundario" href="instituciones.html">Ver directorio →</a></div>
+        <div class="tabla-scroll"><table class="tabla"><thead><tr><th scope="col">Institución</th><th scope="col">Área</th><th scope="col">Estado</th></tr></thead><tbody id="tablaRecientes"></tbody></table></div>
+      </section>
+    </div>
+    <section class="areas" aria-labelledby="tituloAreas">
+      <div><p class="sobrelinea">Conocimiento para todas las etapas</p><h2 id="tituloAreas">Un directorio, muchas formas de aprender</h2></div>
+      <p>Encuentra propuestas educativas y culturales para distintas edades, intereses y comunidades.</p>
+      <div class="areas__lista">
+        <span>Academias e institutos</span><span>Bibliotecas</span><span>Colegios</span><span>Guarderías y Nidos</span><span>Idiomas</span>
+      </div>
+    </section>
+  </main>
+  <div class="alertas" id="alertas" role="status" aria-live="polite"></div>
+  <script src="js/ui.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
